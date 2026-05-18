@@ -1,5 +1,8 @@
+use alloc::string::String;
+use core::fmt;
+
+#[cfg(feature = "std")]
 use std::error::Error;
-use std::fmt;
 
 use crate::Coord;
 
@@ -28,4 +31,5 @@ impl fmt::Display for GeohashError {
     }
 }
 
+#[cfg(feature = "std")]
 impl Error for GeohashError {}
