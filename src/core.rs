@@ -312,8 +312,8 @@ pub fn neighbor(hash_str: &str, direction: Direction) -> Result<String, GeohashE
     let (dlat, dlng) = direction.to_tuple();
     #[cfg(not(feature = "std"))]
     let neighbor_coord = Coord {
-        x: rem_euclid(coord.x + 2f64 * lon_err.abs() * dlng, 360.0) - 180.0,
-        y: rem_euclid(coord.y + 2f64 * lat_err.abs() * dlat, 180.0) - 90.0,
+        x: rem_euclid((coord.x + 2f64 * lon_err.abs() * dlng) + 180.0, 360.0) - 180.0,
+        y: rem_euclid((coord.y + 2f64 * lat_err.abs() * dlat) + 90.0, 180.0) - 90.0,
     };
     #[cfg(feature = "std")]
     let neighbor_coord = Coord {
